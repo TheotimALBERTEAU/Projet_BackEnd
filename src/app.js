@@ -1,11 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 app.use(express.json());
+app.use(cors())
 
 const articleRouter = require('./routes/articles-routes.js');
-app.use(articleRouter);
+app.use('/articles', articleRouter);
 
 if (process.env.DB_MODE === 'mysql') {
     require('./dao/sequelize/connection').connect_sequelize();

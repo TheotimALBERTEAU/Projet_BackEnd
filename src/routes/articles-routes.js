@@ -8,7 +8,7 @@ router.post('/save', async (req, res) => {
     return res.json(serviceResponse);
 });
 
-router.get('/articles', async (req, res) => {
+router.get('/', async (req, res) => {
     const serviceResponse = await ArticleService.getAll();
     return res.json(serviceResponse);
 });
