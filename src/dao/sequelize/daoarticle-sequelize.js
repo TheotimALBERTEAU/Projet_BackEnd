@@ -20,11 +20,11 @@ class DAOArticleSequelize extends IDAOArticle {
         return await Article.findByPk(id)
     }
 
-    async save(article) {
+    async saveArticle(article) {
         return await article.save()
     }
 
-    async delete(article) {
+    async deleteArticle(article) {
         return await article.destroy()
     }
 }

@@ -15,18 +15,16 @@ router.get('/', async (req, res) => {
 
 router.post('/save', async (req, res) => {
     const article = req.body;
-    console.log(article.id);
     if (article.id !== undefined || article.id) {
         const serviceResponse = await ArticleService.modifyArticle(article)
+        return res.json(serviceResponse);
     } else {
-        const serviceResponse = await ArticleService.createArticle(article);
+        const serviceResponse = await ArticleService.createArticle(article)
+        return res.json(serviceResponse);
     }
-
-    return res.json(serviceResponse);
 });
 
 router.delete('/:id', async (req, res) => {
-    console.log(req.params.id);
     const serviceResponse = await ArticleService.deleteArticle(req.params.id);
     return res.json(serviceResponse);
 })

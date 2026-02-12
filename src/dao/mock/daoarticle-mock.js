@@ -29,7 +29,7 @@ class DAOArticleMock extends IDAOArticle {
         return ARTICLES.find(item => item.id === id);
     }
 
-    async save(article) {
+    async saveArticle(article) {
         const index = ARTICLES.findIndex(a => a.id === article.id);
         if (index !== -1) {
             ARTICLES[index] = article;
@@ -41,7 +41,7 @@ class DAOArticleMock extends IDAOArticle {
 
     async deleteArticle(id) {
         const index = ARTICLES.findIndex(a => a.id === id);
-        if (index !== -1) {
+        if (index !== undefined) {
             ARTICLES.splice(index, 1);
             return true;
         }
