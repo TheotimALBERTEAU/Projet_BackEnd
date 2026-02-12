@@ -20,6 +20,12 @@ class DAOArticleSequelize extends IDAOArticle {
         return await Article.findByPk(id)
     }
 
+    async selectByTitle(title) {
+        return await Article.findOne({
+            where : {title : title}
+        });
+    }
+
     async saveArticle(article) {
         return await article.save()
     }

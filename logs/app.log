@@ -231,3 +231,30 @@
 2026-02-12T13:13:43.462Z info: Code: 200 | Message: Affichage de tous les articles
 2026-02-12T13:13:44.848Z info: Code: 200 | Message: Article supprimé
 2026-02-12T13:13:46.808Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:26:11.486Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:26:14.625Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:26:18.272Z info: Code: 200 | Message: Ajout d'un article
+2026-02-12T13:26:22.542Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:26:36.005Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:26:38.297Z info: Code: 200 | Message: Article supprimé
+2026-02-12T13:26:40.684Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:26:42.072Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:31:04.444Z info: Code: 200 | Message: Ajout d'un article
+2026-02-12T13:32:16.544Z info: Code: 200 | Message: Ajout d'un article
+2026-02-12T13:35:29.035Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:35:30.507Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:35:32.161Z info: Code: 200 | Message: Article supprimé
+2026-02-12T13:35:34.657Z info: Code: 200 | Message: Article supprimé
+2026-02-12T13:35:36.125Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:37:00.113Z info: Code: 200 | Message: Ajout d'un article
+2026-02-12T13:37:01.841Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:37:02.668Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:37:04.785Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:37:06.414Z info: Code: 200 | Message: Article supprimé
+2026-02-12T13:37:07.867Z error: Code: 500 | Message: Error while deleting article
+2026-02-12T13:37:09.445Z error: Code: 500 | Message: Error while deleting article
+2026-02-12T13:37:12.282Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:38:55.215Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:46:24.531Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:46:28.192Z info: Code: 200 | Message: Affichage de tous les articles
+2026-02-12T13:46:33.050Z error: Code: 400 | Message: Article already exists

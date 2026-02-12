@@ -1,53 +1,91 @@
 const DAOFactory = require("../dao/dao-factory");
 const { v4: uuidv4 } = require('uuid');
-const {makeService} = require("./service-helper");
+const {makeService, makeError} = require("./service-helper");
 const newArticle = require("../dao/sequelize/models/article_model");
 const reqBody = require("../dao/sequelize/models/article_model");
 
 module.exports = {
     createArticle: async (reqBody) => {
-        // L'objet jeu a insérer
-        const generatedId = uuidv4(); // id générer
-        let article = { id: generatedId, title: reqBody.title, desc: reqBody.desc, author: reqBody.author, imgPath: reqBody.imgPath };
+        try {
+            const existingArticle = await DAOFactory.getDAOArticle().selectByIdAndTitle(reqBody.title);
 
-        //insert article
-        // Await car async et faut retourner la réponse json une fois la requête Insert executée
-        const newArticle = await DAOFactory.getDAOArticle().insert(article);
+            if (existingArticle) {
+                return makeError("400", "Error : Article already exists", null);
+            }
 
-        return makeService("200", "Ajout d'un article", newArticle);
+            // L'article à insérer
+            const generatedId = uuidv4(); // id générer
+            let article = {
+                id: generatedId,
+                title: reqBody.title,
+                desc: reqBody.desc,
+                author: reqBody.author,
+                imgPath: reqBody.imgPath
+            };
+
+            //insert article
+            // Await car async et faut retourner la réponse json une fois la requête Insert executée
+            const newArticle = await DAOFactory.getDAOArticle().insert(article);
+
+            return makeService("200", "Ajout d'un article", newArticle);
+        } catch (err) {
+            return makeError("500", "Error while adding article", err);
+        }
     },
 
     modifyArticle: async (reqBody) => {
-        let foundArticle = await DAOFactory.getDAOArticle().selectById(reqBody.id);
+        try {
+            let foundArticle = await DAOFactory.getDAOArticle().selectById(reqBody.id);
+            if (!foundArticle) {
+                return makeError("400", "Error : Article not found", null);
+            }
 
-        foundArticle.title = reqBody.title;
-        foundArticle.desc = reqBody.desc;
-        foundArticle.author = reqBody.author;
-        foundArticle.imgPath = reqBody.imgPath;
+            const duplicateArticle = await DAOFactory.getDAOArticle().selectByTitle(reqBody.title);
 
-        await DAOFactory.getDAOArticle().saveArticle(foundArticle);
+            if (duplicateArticle && duplicateArticle.id !== reqBody.id) {
+                return makeError("400", "Error : An article already got this title", null);
+            }
 
-        return makeService("200", "Modification de l'article", foundArticle);
+            foundArticle.title = reqBody.title;
+            foundArticle.desc = reqBody.desc;
+            foundArticle.author = reqBody.author;
+            foundArticle.imgPath = reqBody.imgPath;
+
+            await DAOFactory.getDAOArticle().saveArticle(foundArticle);
+
+            return makeService("200", "Modification de l'article", foundArticle);
+        } catch (err) {
+            return makeError("500", "Error while modifying article", err);
+        }
     },
 
     getArticleById: async (id) => {
-        const article = await DAOFactory.getDAOArticle().selectById(id);
-        return makeService("200", "Ajout d'un article", article);
+        try {
+            const article = await DAOFactory.getDAOArticle().selectById(id);
+            return makeService("200", "Ajout d'un article", article);
+        } catch (err) {
+            return makeError("500", "Error while getting article", err);
+        }
     },
 
     getAll: async () => {
         //insert article
         // Await car async et faut retourner la réponse json une fois la requête Insert executée
-        const allArticles = await DAOFactory.getDAOArticle().selectAll();
-
-        return makeService("200", "Affichage de tous les articles", allArticles);
+        try {
+            const allArticles = await DAOFactory.getDAOArticle().selectAll();
+            return makeService("200", "Affichage de tous les articles", allArticles);
+        } catch (err) {
+            return makeError("500", "Error while getting articles", err);
+        }
     },
 
     deleteArticle: async (id) => {
-        let foundArticle = await DAOFactory.getDAOArticle().selectById(id);
-
-        await DAOFactory.getDAOArticle().deleteArticle(foundArticle);
-
-        return makeService("200", "Article supprimé", foundArticle);
+        try {
+            let foundArticle = await DAOFactory.getDAOArticle().selectById(id);
+            await DAOFactory.getDAOArticle().deleteArticle(foundArticle);
+            return makeService("200", "Article supprimé", foundArticle);
+        } catch (err) {
+            return makeError("500", "Error while deleting article", err);
+        }
     }
 }

@@ -29,6 +29,10 @@ class DAOArticleMock extends IDAOArticle {
         return ARTICLES.find(item => item.id === id);
     }
 
+    async selectByTitle(title) {
+        return ARTICLES.find(item => item.title === title);
+    }
+
     async saveArticle(article) {
         const index = ARTICLES.findIndex(a => a.id === article.id);
         if (index !== -1) {
