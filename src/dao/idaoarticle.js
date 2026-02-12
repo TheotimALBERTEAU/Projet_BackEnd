@@ -1,4 +1,5 @@
 class IDAOArticle {
+    async insert(article) {}
     async selectAll() {}
 }
 
