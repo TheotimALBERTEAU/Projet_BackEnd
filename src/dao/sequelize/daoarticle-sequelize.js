@@ -15,6 +15,18 @@ class DAOArticleSequelize extends IDAOArticle {
     async selectAll() {
         return await Article.findAll();
     }
+
+    async selectById(id) {
+        return await Article.findByPk(id)
+    }
+
+    async save(article) {
+        return await article.save()
+    }
+
+    async delete(article) {
+        return await article.destroy()
+    }
 }
 
 module.exports = DAOArticleSequelize;
