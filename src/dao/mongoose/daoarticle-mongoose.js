@@ -5,7 +5,7 @@ class DaoArticleMongoose {
 
     async insert(article) {
         const newArticle = new Article({
-            uid : article.uid,
+            id : article.id,
             "title" : article.title,
             "desc": article.desc,
             "author": article.author,
@@ -17,6 +17,18 @@ class DaoArticleMongoose {
 
     async selectAll() {
         return await Article.find();
+    }
+
+    async selectById(id) {
+        return await Article.findOne({id : id});
+    }
+
+    async saveArticle(article) {
+        return await article.save();
+    }
+
+    async deleteArticle(article) {
+        return await article.deleteOne()
     }
 }
 

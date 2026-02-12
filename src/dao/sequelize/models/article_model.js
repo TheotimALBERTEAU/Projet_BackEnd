@@ -4,7 +4,7 @@ const sequelize = require('../config/database');
 const Article = sequelize.define(
     'Article',
     {
-        uid: {
+        id: {
             type: DataTypes.STRING,
             primaryKey: true,
         },
