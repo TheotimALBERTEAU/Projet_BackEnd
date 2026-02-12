@@ -3,6 +3,7 @@ class IDAOArticle {
     async selectAll() {}
     async selectById(id) {}
     async saveArticle(article) {}
+    async deleteArticle(article) {}
 }
 
 module.exports = IDAOArticle;

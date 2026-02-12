@@ -1,4 +1,5 @@
 const IDAOArticle = require("../idaoarticle");
+const article = require("../sequelize/models/article_model");
 
 let ARTICLES = [
     { id: '1', title: 'Premier article', desc: 'Contenu du premier article', author: 'Isaac', imgPath: 'https://dogtime.com/wp-content/uploads/sites/12/2011/01/GettyImages-653001154-e1691965000531.jpg' },
@@ -23,6 +24,14 @@ class DAOArticleMock extends IDAOArticle {
     async selectAll() {
         return ARTICLES;
     }
+
+    async selectById(id) {
+        for (article of ARTICLES) {
+            if (article.id === id) {
+                return article;
+            }
+        }
+    };
 }
 
 module.exports = DAOArticleMock;
