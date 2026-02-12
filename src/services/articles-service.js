@@ -16,7 +16,7 @@ module.exports = {
     },
 
     getAll: async () => {
-        //insert game
+        //insert article
         // Await car async et faut retourner la réponse json une fois la requête Insert  executée
         const allArticles = await DAOFactory.getDAOArticle().selectAll();
 

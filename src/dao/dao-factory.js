@@ -1,17 +1,22 @@
 module.exports = {
 
     getDAOArticle : () => {
-        if (process.env.DB_MODE === 'mongodb') {
+        if (process.env.DB_MODE === 'mysql') {
+            const DAOArticleSequelize = require("./sequelize/daoarticle-sequelize");
+            return new DAOArticleSequelize();
+        }
+        // MODE : Mock
+        else if (process.env.DB_MODE === 'mongodb') {
             const DAOArticleMongoose = require("./mongoose/daoarticle-mongoose")
             return new DAOArticleMongoose();
         }
         // MODE : Mock
         else if (process.env.DB_MODE === "mock") {
-            const DAOGameMock = require("./mock/daogame-mock");
-            return new DAOGameMock();
+            const DAOArticleMock = require("./mock/daoarticle-mock");
+            return new DAOArticleMock();
         }
 
-        const DAOGameMock = require("./mock/daogame-mock");
-        return new DAOGameMock();
+        const DAOArticleMock = require("./mock/daoarticle-mock");
+        return new DAOArticleMock();
     }
 }

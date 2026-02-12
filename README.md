@@ -77,7 +77,7 @@ L'API est accessible sur les routes suivantes (préfixées par `/articles` selon
 ├── src/
 │   ├── dao/                 # Data Access Objects (Gestion des données)
 │   │   ├── mock/            # Données de test (Simulacres)
-│   │   │   └── daogame-mock.js
+│   │   │   └── daoarticle-mock.js
 │   │   ├── mongoose/        # Implémentation MongoDB
 │   │   │   ├── models/      # Schémas Mongoose
 │   │   │   ├── connection.js
