@@ -39,8 +39,11 @@ npm install
 | MYSQL_HOST     | "host_de_la_db" en local : "localhost"    |
 | MYSQL_DIALECT  | "dialect_de_la_db" ici : "mysql"          |
 
+4. **Vérifier le dossier logs**
+   Vérifier qu'il y a bien le dossier ``logs`` à la base du projet, **sinon**, le créer.
 
-4. **Démarrer l'application :**
+
+5. **Démarrer l'application :**
 ```bash
 node app.js
 
