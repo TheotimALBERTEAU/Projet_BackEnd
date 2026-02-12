@@ -26,12 +26,27 @@ class DAOArticleMock extends IDAOArticle {
     }
 
     async selectById(id) {
-        for (article of ARTICLES) {
-            if (article.id === id) {
-                return article;
-            }
+        return ARTICLES.find(item => item.id === id);
+    }
+
+    async save(article) {
+        const index = ARTICLES.findIndex(a => a.id === article.id);
+        if (index !== -1) {
+            ARTICLES[index] = article;
+        } else {
+            ARTICLES.push(article);
         }
-    };
+        return article;
+    }
+
+    async deleteArticle(id) {
+        const index = ARTICLES.findIndex(a => a.id === id);
+        if (index !== -1) {
+            ARTICLES.splice(index, 1);
+            return true;
+        }
+        return false;
+    }
 }
 
 module.exports = DAOArticleMock;
