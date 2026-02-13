@@ -1,8 +1,6 @@
 const DAOFactory = require("../dao/dao-factory");
 const { v4: uuidv4 } = require('uuid');
 const {makeService, makeError} = require("./service-helper");
-const newArticle = require("../dao/sequelize/models/article_model");
-const reqBody = require("../dao/sequelize/models/article_model");
 
 module.exports = {
     createArticle: async (reqBody) => {
