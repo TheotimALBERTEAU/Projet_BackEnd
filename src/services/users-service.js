@@ -3,8 +3,6 @@ const { v4: uuidv4 } = require('uuid');
 const {makeService, makeError} = require("./service-helper");
 const jwt = require("jsonwebtoken");
 
-const jwtSecret = "AZERTY"
-
 module.exports = {
     connectUser: async (reqBody) => {
         try {
@@ -16,7 +14,7 @@ module.exports = {
 
             const token = jwt.sign(
                 { email : foundUser.email},
-                jwtSecret,
+                process.env.JWTSECRET,
                 {expiresIn: "1h"}
             );
 
@@ -46,7 +44,6 @@ module.exports = {
                     newUser[field] = reqBody[field];
                 }
             });
-            const createdUser = DAOFactory.getDAOUser().insert(newUser);
             return makeService("200", "Signup succesfully achieved", newUser);
 
         } catch (err) {

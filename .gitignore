@@ -16,3 +16,6 @@ logs/
 # Système
 .DS_Store
 Thumbs.db
+
+# Sonar
+sonar-project.properties
