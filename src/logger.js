@@ -3,19 +3,20 @@ const winston = require("winston");
 module.exports = {
     // -- configuer le logger
     logger: winston.createLogger({
-        // Log only if level is less than (meaning more severe) or equal to this
         level: "info",
-        // Use timestamp and printf to create a standard log format
         format: winston.format.combine(
-            winston.format.timestamp(),
-            winston.format.printf(
-                (info) => `${info.timestamp} ${info.level}: ${info.message}`
+            winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+            winston.format.printf((info) =>
+                // La condition est évaluée et le résultat est DIRECTEMENT retourné aux transports
+                info.level === 'error'
+                    ? `❌ [${info.timestamp}] ${info.level.toUpperCase()} : ${info.message}\n---------------------------------------------------------`
+                    : `✅ [${info.timestamp}] ${info.level.toUpperCase()}  : ${info.message}`
             )
         ),
         // Log to the console and a file
         transports: [
             new winston.transports.Console(),
-            new winston.transports.File({ filename: "../logs/app.log" }),
+            new winston.transports.File({ filename: "logs/app.log" }),
         ],
     })
 }
