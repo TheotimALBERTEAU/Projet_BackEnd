@@ -26,4 +26,9 @@ test('Tester createArticle', async() => {
 test('Tester modifyArticle', async() => {
     const testResult = await ArticleService.modifyArticle({id: "3", title: "changement de nom"})
     expect(testResult.code).toBe("200")
+});
+
+test('Tester deleteArticle', async() => {
+    const testResult = await ArticleService.deleteArticle("2")
+    expect(testResult.code).toBe("200")
 })
