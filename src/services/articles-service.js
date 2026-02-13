@@ -7,7 +7,7 @@ const reqBody = require("../dao/sequelize/models/article_model");
 module.exports = {
     createArticle: async (reqBody) => {
         try {
-            const existingArticle = await DAOFactory.getDAOArticle().selectByIdAndTitle(reqBody.title);
+            const existingArticle = await DAOFactory.getDAOArticle().selectByTitle(reqBody.title);
 
             if (existingArticle) {
                 return makeError("400", "Error : Article already exists", null);

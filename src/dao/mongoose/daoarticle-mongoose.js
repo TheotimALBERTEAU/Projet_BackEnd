@@ -23,7 +23,7 @@ class DaoArticleMongoose {
         return await Article.findOne({id : id});
     }
 
-    async selectByIdAndTitle(title) {
+    async selectByTitle(title) {
         return await Article.findOne({title : title});
     }
 
