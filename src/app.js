@@ -9,6 +9,9 @@ app.use(cors())
 const articleRouter = require('./routes/articles-routes.js');
 app.use('/articles', articleRouter);
 
+const userRouter = require('./routes/user-routes.js');
+app.use(userRouter);
+
 if (process.env.DB_MODE === 'mysql') {
     require('./dao/sequelize/connection').connect_sequelize();
 }

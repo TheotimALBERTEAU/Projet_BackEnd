@@ -1,7 +1,7 @@
 const Article = require(`./models/article-model`);
-const IDAOArticle = require('../idaoarticle');
+const IDAOArticle = require(`./models/article-model`);
 
-class DaoArticleMongoose {
+class DaoArticleMongoose extends IDAOArticle {
 
     async insert(article) {
         const newArticle = new Article({

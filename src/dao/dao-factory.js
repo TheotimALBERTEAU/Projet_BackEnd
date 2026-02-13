@@ -18,5 +18,26 @@ module.exports = {
 
         const DAOArticleMock = require("./mock/daoarticle-mock");
         return new DAOArticleMock();
+    },
+
+    getDAOUser : () => {
+        // MODE : MySQL
+        if (process.env.DB_MODE === 'mysql') {
+            const DAOUserSequelize = require("./sequelize/daouser-sequelize");
+            return new DAOUserSequelize();
+        }
+        // MODE : mongodb
+        else if (process.env.DB_MODE === 'mongodb') {
+            const DAOUserMongoose = require("./mongoose/daouser-mongoose");
+            return new DAOUserMongoose();
+        }
+        // MODE : mock
+        else if (process.env.DB_MODE === "mock") {
+            const DAOUserMock = require("./mock/daouser-mock");
+            return new DAOUserMock();
+        }
+
+        const DAOUserMock = require("./mock/daouser-mock");
+        return new DAOUserMock();
     }
 }
