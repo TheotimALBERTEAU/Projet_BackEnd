@@ -9,7 +9,7 @@ module.exports = {
             winston.format.printf((info) =>
                 // La condition est évaluée et le résultat est DIRECTEMENT retourné aux transports
                 info.level === 'error'
-                    ? `❌ [${info.timestamp}] ${info.level.toUpperCase()} : ${info.message}\n---------------------------------------------------------`
+                    ? `❌ [${info.timestamp}] ${info.level.toUpperCase()} : ${info.message}`
                     : `✅ [${info.timestamp}] ${info.level.toUpperCase()}  : ${info.message}`
             )
         ),
