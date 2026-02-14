@@ -6,11 +6,6 @@ class DAOUserMongoose extends IDAOUser {
         return await User.findOne({ email: reqBody.email })
     }
 
-    async checkFields(reqBody) {
-        const requiredFields = ["email", "password", "pseudo", "cityCode", "city", "phone"]
-
-    }
-
     async insert(user){
         const newUser = new User({
             id: user.id,
