@@ -37,10 +37,6 @@ class DAOUserMock extends IDAOUser {
         return USERS.find(user => user.email === reqBody.email)
     }
 
-    async checkFields(reqBody) {
-        return requiredFields.every(field => reqBody.hasOwnProperty(field));
-    }
-
     async insert(user){
         return USERS.push(user)
     }

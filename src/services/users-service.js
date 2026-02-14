@@ -33,10 +33,6 @@ module.exports = {
             if (reqBody.password !== reqBody.passwordConfirm) {
                 return makeError("603", "Password mismatch", null);
             }
-            const successedFields = DAOFactory.getDAOUser().checkFields(reqBody);
-            if (!successedFields) {
-                return makeError("604", "Some of fields are incomplete", null);
-            }
             const fields = ["email", "password", "passwordConfirm", "pseudo", "cityCode", "city", "phone"]
             let newUser = { id : uuidv4() };
             fields.forEach(field => {
@@ -44,6 +40,7 @@ module.exports = {
                     newUser[field] = reqBody[field];
                 }
             });
+            DAOFactory.getDAOUser().insert(newUser);
             return makeService("200", "Signup succesfully achieved", newUser);
 
         } catch (err) {

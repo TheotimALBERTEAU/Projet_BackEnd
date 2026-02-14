@@ -4,12 +4,33 @@ const User = mongoose.model(
     'User',
     {
         id: String,
-        email: String,
-        password: String,
-        pseudo: String,
-        cityCode: String,
-        city: String,
-        phone: String,
+        email: {
+                type: String,
+                required: true,
+                unique: true,
+                trim: true,
+                lowercase: true
+        },
+        password: {
+                type: String,
+                required: true
+        },
+        pseudo: {
+                type: String,
+                required: true
+        },
+        cityCode: {
+                type: String,
+                required: true
+        },
+        city: {
+                type: String,
+                required: true
+        },
+        phone: {
+                type: String,
+                required: true
+        },
     },
     'users'
 );
