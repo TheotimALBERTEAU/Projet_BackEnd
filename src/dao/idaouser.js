@@ -1,5 +1,5 @@
 class IDAOUser {
-    async selectByEmail(reqBody) {}
+    async selectByEmail(email) {}
     async insert(user){}
 }
 

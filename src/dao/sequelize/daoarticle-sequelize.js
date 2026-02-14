@@ -1,4 +1,4 @@
-const Article = require("./models/article_model");
+const Article = require("./models/article-model");
 const IDAOArticle = require("../idaoarticle");
 
 class DAOArticleSequelize extends IDAOArticle {

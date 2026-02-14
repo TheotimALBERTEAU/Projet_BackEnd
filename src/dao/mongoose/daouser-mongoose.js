@@ -2,8 +2,8 @@ const User = require('./models/user-model');
 const IDAOUser = require('../idaouser')
 
 class DAOUserMongoose extends IDAOUser {
-    async selectByEmail(reqBody) {
-        return await User.findOne({ email: reqBody.email })
+    async selectByEmail(email) {
+        return await User.findOne({ email: email })
     }
 
     async insert(user){

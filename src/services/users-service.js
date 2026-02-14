@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
     connectUser: async (reqBody) => {
         try {
-            const foundUser = await DAOFactory.getDAOUser().selectByEmail(reqBody);
+            const foundUser = await DAOFactory.getDAOUser().selectByEmail(reqBody.email);
 
             if (!foundUser || foundUser.password !== reqBody.password) {
                 return makeError("601", "Email/password Mismatch", null);
@@ -25,8 +25,8 @@ module.exports = {
     },
 
     signupUser: async (reqBody) => {
-        try {
-            const foundUser = await DAOFactory.getDAOUser().selectByEmail(reqBody);
+        //try {
+            const foundUser = await DAOFactory.getDAOUser().selectByEmail(reqBody.email);
             if (foundUser) {
                 return makeError("602", "Email already taken by another account", null);
             }
@@ -43,8 +43,8 @@ module.exports = {
             DAOFactory.getDAOUser().insert(newUser);
             return makeService("200", "Signup succesfully achieved", newUser);
 
-        } catch (err) {
-            return makeError("600", "Error while creating user", err);
-        }
+        //} catch (err) {
+        //    return makeError("600", "Error while creating user", err);
+        //}
     }
 }

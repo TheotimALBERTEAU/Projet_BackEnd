@@ -33,8 +33,8 @@ let USERS = [
 const requiredFields = ["email", "password", "pseudo", "cityCode", "city", "phone"]
 
 class DAOUserMock extends IDAOUser {
-    async selectByEmail(reqBody) {
-        return USERS.find(user => user.email === reqBody.email)
+    async selectByEmail(email) {
+        return USERS.find(user => user.email === email)
     }
 
     async insert(user){

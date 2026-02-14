@@ -6,7 +6,8 @@ module.exports = {
             .then(() => {
                 console.log('✨ Successfully authenticated!')
 
-                const Article = require('./models/article_model');
+                const Article = require('./models/article-model');
+                const User = require('./models/user-model');
 
                 sequelize.sync()
                     .then(() => console.log('🧱 Tables Synchronised!'))
